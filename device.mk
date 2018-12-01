@@ -383,6 +383,12 @@ PRODUCT_PACKAGES += \
     rcs_service_api \
     rcs_service_api.xml
 
+# RCS
+PRODUCT_PACKAGES += \
+    com.android.ims.rcsmanager \
+    PresencePolling \
+    RcsService
+
 # Releasetools
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/releasetools/devinfo.sh:install/bin/devinfo.sh
