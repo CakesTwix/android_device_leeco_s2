@@ -21,7 +21,7 @@ $(call inherit-product, device/leeco/s2/full_s2.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
 $(call inherit-product, vendor/carbon/config/common.mk)
-
+$(call inherit-product, vendor/carbon/config/gsm.mk)
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := s2
 PRODUCT_NAME := carbon_s2
