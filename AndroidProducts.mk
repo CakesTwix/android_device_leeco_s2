@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_s2.mk
+    $(LOCAL_DIR)/carbon_s2.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_s2-user \
-    aosp_s2-userdebug \
-    aosp_s2-eng
+    carbon_s2-user \
+    carbon_s2-userdebug \
+    carbon_s2-eng
