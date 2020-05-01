@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/carbon_s2.mk
+    $(LOCAL_DIR)/ancient_s2.mk
 
 COMMON_LUNCH_CHOICES := \
-    carbon_s2-user \
-    carbon_s2-userdebug \
-    carbon_s2-eng
+    ancient_s2-user \
+    ancient_s2-userdebug \
+    ancient_s2-eng
