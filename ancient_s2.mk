@@ -17,7 +17,7 @@
 # Inherit device configuration
 $(call inherit-product, device/leeco/s2/full_s2.mk)
 
-# Inherit some common PixelExperience stuff.
+# Inherit some common AncientOS stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
 $(call inherit-product, vendor/ancient/config/common_full_phone.mk)
