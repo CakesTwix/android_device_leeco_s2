@@ -120,6 +120,6 @@ void vendor_load_properties() {
     else
     {
         // Unknown variant
-        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X52X");
+        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X527");
     }
 }
