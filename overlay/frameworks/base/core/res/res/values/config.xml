@@ -548,4 +548,8 @@
          manually by the user. Off by default, since the expected haptic feedback may not be
          available on some devices. -->
     <bool name="config_enableHapticTextHandle">true</bool>
+	
+	<!-- Lockscreen rotation is default disabled into fmwk -->
+    <bool name="config_enableLockScreenRotation">false</bool>
+
 </resources>
