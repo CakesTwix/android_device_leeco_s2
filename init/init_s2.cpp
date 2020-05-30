@@ -1,6 +1,6 @@
 /*
    Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
-   Copyright (c) 2017-2018, The LineageOS Project
+   Copyright (c) 2017-2020, The LineageOS Project
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -28,98 +28,67 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "property_service.h"
-#include "vendor_init.h"
+#include <android-base/logging.h>
+#include <android-base/properties.h>
+#include <android-base/strings.h>
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#define DEVINFO_FILE "/dev/block/mmcblk0p25"
+#include "vendor_init.h"
+#include "property_service.h"
 
-void property_override(char const prop[], char const value[])
+using android::init::property_set;
+
+void property_override(const std::string& name, const std::string& value)
 {
-    prop_info *pi;
+    size_t valuelen = value.size();
 
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
-        __system_property_update(pi, value, strlen(value));
-    else
-        __system_property_add(prop, strlen(prop), value, strlen(value));
+    prop_info* pi = (prop_info*) __system_property_find(name.c_str());
+    if (pi != nullptr) {
+        __system_property_update(pi, value.c_str(), valuelen);
+    }
+    else {
+        int rc = __system_property_add(name.c_str(), name.size(), value.c_str(), valuelen);
+        if (rc < 0) {
+            LOG(ERROR) << "property_set(\"" << name << "\", \"" << value << "\") failed: "
+                       << "__system_property_add failed";
+        }
+    }
 }
 
-void property_override_triple(char const product_prop[], char const system_prop[], char const vendor_prop[], char const value[])
+void property_overrride_triple(const std::string& product_prop, const std::string& system_prop, const std::string& vendor_prop, const std::string& value)
 {
     property_override(product_prop, value);
     property_override(system_prop, value);
     property_override(vendor_prop, value);
 }
 
-static int read_file2(const char *fname, char *data, int max_size)
+void vendor_load_properties()
 {
-    int fd, rc;
-    if (max_size < 1)
-        return 0;
-    fd = open(fname, O_RDONLY);
-    if (fd < 0) {
-        return 0;
-    }
-    rc = read(fd, data, max_size - 1);
-    if ((rc > 0) && (rc < max_size))
-        data[rc] = '\0';
-    else
-        data[0] = '\0';
-    close(fd);
-    return 1;
-}
+    LOG(INFO) << "Loading vendor specific properties";
+    std::string device = android::base::GetProperty("ro.leeco.devinfo", "");
+    LOG(INFO) << "DEVINFO: " << device;
 
-void vendor_load_properties() {
-    char device[PROP_VALUE_MAX];
-    int isX520 = 0, isX522 = 0, isX526 = 0, isX527 = 0;
-
-    // Default props
-    if (read_file2(DEVINFO_FILE, device, sizeof(device)))
-    {
-        if (!strncmp(device, "s2_open", 7))
-        {
-            isX520 = 1;
-        }
-        else if (!strncmp(device, "s2_oversea", 10))
-        {
-            isX522 = 1;
-        }
-        else if (!strncmp(device, "s2_india", 8))
-        {
-            isX526 = 1;
-        }
-        else if (!strncmp(device, "s2_ww", 5))
-        {
-            isX527 = 1;
-        }
-    }
-
-    if (isX520)
-    {
+    if (device == "s2_open") {
         // This is X520
-        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X520");
+        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X520");
     }
-    else if (isX522)
-    {
+    else if (device == "s2_oversea") {
         // This is X522
-        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X522");
+        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X522");
     }
-    else if (isX526)
-    {
+    else if (device == "s2_india") {
         // This is X526
-        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X526");
+        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X526");
     }
-    else if (isX527)
-    {
+    else if (device == "s2_ww") {
         // This is X527
-        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X527");
+        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X527");
     }
-    else
-    {
+    else {
         // Unknown variant
-        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X52X");
+        property_overrride_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "X52X");
+        LOG(ERROR) << "Unable to set DEVINFO from ro.leeco.devinfo prop";
     }
 }
