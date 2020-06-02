@@ -1,4 +1,4 @@
-LOCAL_PATH:= $(call my-dir)
+#LOCAL_PATH:= $(call my-dir)
 #Example
 #include $(CLEAR_VARS)
 #LOCAL_MODULE_TAGS     := optional
