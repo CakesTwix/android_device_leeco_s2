@@ -1,3 +1,5 @@
 type adsprpcd_file, file_type;
 type firmware_file, file_type;
 type persist_file, file_type;
+
+type devinfo_block_device, dev_type;
