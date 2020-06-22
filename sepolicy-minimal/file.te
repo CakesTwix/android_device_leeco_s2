@@ -3,3 +3,4 @@ type firmware_file, file_type;
 type persist_file, file_type;
 
 type devinfo_block_device, dev_type;
+type sysfs_ir_enable, fs_type, sysfs_type;
