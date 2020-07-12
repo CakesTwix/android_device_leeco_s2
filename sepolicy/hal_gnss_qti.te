@@ -1,0 +1,5 @@
+allow hal_gnss_qti sysfs:file {read write open}; 
+allow hal_gnss_qti sysfs:sock_file {create write};
+allow hal_gnss_qti qmuxd_socket:dir {write add_name}; 
+allow hal_gnss_qti qmuxd_socket:sock_file {create write}; 
+allow hal_gnss_qti qmuxd:unix_stream_socket {connectto}; 

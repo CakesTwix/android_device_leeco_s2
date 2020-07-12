@@ -1,0 +1,2 @@
+allow vold adsprpcd_file:dir {open ioctl read} ;
+allow vold hal_bootctl_hwservice:hwservice_manager { find } ; 

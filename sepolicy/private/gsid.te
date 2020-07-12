@@ -1,0 +1,2 @@
+allow gsid device:file { open write } ;
+

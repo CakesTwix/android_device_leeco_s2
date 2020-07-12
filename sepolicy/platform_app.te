@@ -1,0 +1,2 @@
+allow platform_app sysfs:file {read open};  
+allow platform_app time_daemon:unix_stream_socket { connectto } ;

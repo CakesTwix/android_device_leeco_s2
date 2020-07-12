@@ -1,0 +1,4 @@
+allow cnd sysfs:file {read open};    
+allow cnd wifi_prop:file {read open getattr}; 
+allow cnd radio:binder {transfer};
+allow cnd wpa_data_file:dir {search};
