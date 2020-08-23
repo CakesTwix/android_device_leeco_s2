@@ -16,14 +16,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="leeco_settings_title">LeEco Settings</string>
-    <string name="leeco_settings_summary">Настройки устройства</string>
+    <string name="leeco_settings_title">Настройки LeEco</string>
+    <string name="leeco_settings_summary">Дополнительные настройки устройства</string>
 
-    <string name="camera_reset_title">Перезапуск камеры</string>
-    <string name="camera_reset_summary">Это перезапустит сервис камеры, если камера показывает черный экран</string>
-    <string name="camera_reset_hint">перезапуск камеры...</string>
+    <string name="camera_reset_title">Перезагрузка камеры</string>
+    <string name="camera_reset_summary">Перезагрузка камеры, если у вас чёрный экран в камере</string>
+    <string name="camera_reset_hint">перезагрузка камеры...</string>
     <string name="camera_reset_launcher_name">CamReset</string>
     <string name="camera_hal3_enable">Camera HAL3</string>
-    <string name="camera_hal3_summary">Отключение HAL3 приведет к принудительному использованию HAL1, если вас раздражают черные экраны камеры. Обратите внимание, что моды Gcam требуют HAL3.</string>
+    <string name="camera_hal3_summary">Отключение HAL3 приведет к принудительному использованию HAL1, если вас раздражают черные экраны камеры. Обратите внимание, что моды GCam требуют HAL3.</string>
 
 </resources>
