@@ -286,3 +286,6 @@ camera.notify_nfc=1
 # Rescue party
 persist.sys.disable_rescue=true
 ro.control_privapp_permissions=log
+
+# Seamless transfer
+sys.fflag.override.settings_seamless_transfer=true
