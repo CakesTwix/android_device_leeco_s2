@@ -1,7 +1,0 @@
-# misc_writer
-type misc_writer, coredomain, domain;
-#type misc_writer_exec, system_file_type, exec_type, file_type;
-
-allow misc_writer proc_cmdline:file {open getattr};  
-allow misc_writer block_device:blk_file {getattr read open write};  
-allow misc_writer misc_writer:capability {dac_override};  

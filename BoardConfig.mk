@@ -45,7 +45,8 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8952
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci earlyprintk loop.max_part=7
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += skip_initramfs rootwait ro init=/init root=/dev/dm-0 dm=\"system none ro,0 1 android-verity /dev/mmcblk0p27\"
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100
@@ -175,10 +176,6 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 57033596416
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
-BOARD_ROOT_EXTRA_FOLDERS := persist
-BOARD_ROOT_EXTRA_SYMLINKS := \
-	/vendor/dsp:/dsp \
-	/vendor/firmware_mnt:/firmware
 
 # Filesystem Config
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -229,7 +226,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # Recovery
-TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -239,11 +235,10 @@ TARGET_USES_OLD_MNC_FORMAT := true
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
-include device/qcom/sepolicy-legacy/sepolicy.mk
+include device/qcom/sepolicy-legacy-um/sepolicy.mk
 
-#BOARD_SEPOLICY_VERS := 29.0
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
+BOARD_SEPOLICY_VERS := 29.0
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy-minimal
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
@@ -253,13 +248,12 @@ TARGET_LD_SHIM_LIBS := \
    /system/lib64/hw/fingerprint.vendor.msm8952.so|fakelogprint.so \
    /system/bin/gx_fpd|fakelogprint.so
 
-
 # System As Root
-#BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-#BOARD_ROOT_EXTRA_FOLDERS := persist
-#BOARD_ROOT_EXTRA_SYMLINKS := \
-#    /vendor/dsp:/dsp \
-#    /vendor/firmware_mnt:/firmware
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_ROOT_EXTRA_FOLDERS := persist
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /vendor/dsp:/dsp \
+    /vendor/firmware_mnt:/firmware
 
 # Telephony
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true

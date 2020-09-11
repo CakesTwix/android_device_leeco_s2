@@ -1,2 +1,0 @@
-type adbroot, domain, coredomain;
-allow adbroot device:file { write open } ; 

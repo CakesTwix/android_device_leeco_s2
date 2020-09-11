@@ -1,3 +1,0 @@
-type vendor_radio_prop, property_type;
-allow qmuxd sysfs:file {read open};  
-allow qmuxd vendor_radio_prop:file {read open getattr};  

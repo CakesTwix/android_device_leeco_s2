@@ -1,5 +1,0 @@
-allow hal_drm_clearkey mediadrm_vendor_data_file:dir create_dir_perms;
-allow hal_drm_clearkey mediadrm_vendor_data_file:file create_file_perms;
-type hal_drm_clearkey_exec, exec_type, vendor_file_type, file_type;
-type hal_drm_clearkey, domain;
-type mediadrm_vendor_data_file, fs_type, dev_type, file_type;

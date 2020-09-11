@@ -1,3 +1,0 @@
-allow hal_perf_default sysfs:file {read open};   
-allow hal_perf_default sysfs:capability {dac_override};   
-allow hal_perf_default hal_perf_default:capability { dac_override } ;

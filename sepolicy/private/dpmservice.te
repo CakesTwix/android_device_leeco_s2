@@ -1,2 +1,0 @@
-allow radio dpmd:unix_stream_socket { connectto } ;
-allow radio dpmservice:service_manager { add } ;

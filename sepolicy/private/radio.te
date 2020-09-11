@@ -1,1 +1,0 @@
-allow radio dpmd_socket:sock_file { write } ;

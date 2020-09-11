@@ -1,1 +1,0 @@
-allow fsck fsck:capability { dac_override } ; 
