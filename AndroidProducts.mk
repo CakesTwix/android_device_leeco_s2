@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/ancient_s2.mk
+    $(LOCAL_DIR)/revengeos_s2.mk
 
 COMMON_LUNCH_CHOICES := \
-    ancient_s2-user \
-    ancient_s2-userdebug \
-    ancient_s2-eng
+    revengeos_s2-user \
+    revengeos_s2-userdebug \
+    revengeos_s2-eng

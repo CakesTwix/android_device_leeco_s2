@@ -1,4 +1,4 @@
-#include <log/log_transport.h>
+#include <android/log.h>
 #include <private/android_filesystem_config.h>
 #include <private/android_logger.h>
 
