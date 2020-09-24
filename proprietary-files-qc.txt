@@ -570,7 +570,6 @@ vendor/lib/lib-rtpcommon.so
 vendor/lib/lib-rtpcore.so
 vendor/lib/lib-rtpdaemoninterface.so
 vendor/lib/lib-rtpsl.so
-vendor/lib/lib-uceservice.so
 vendor/lib/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib/vendor.qti.imsrtpservice@1.0_vendor.so
 vendor/lib64/com.qualcomm.qti.imscmservice@1.0_vendor.so
@@ -584,10 +583,12 @@ vendor/lib64/lib-rtpcommon.so
 vendor/lib64/lib-rtpcore.so
 vendor/lib64/lib-rtpdaemoninterface.so
 vendor/lib64/lib-rtpsl.so
-vendor/lib64/lib-uceservice.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
 vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so|cbc75b554051298020506d85427a1aa70346fbd5
+
+# RIL (IMS) - from Gemini - Xiaomi/gemini/gemini:8.0.0/OPR1.170623.032/V10.2.2.0.OAAMIXM
+vendor/lib64/lib-uceservice.so|2d84174929410554ffb66e6e917442eaee525e58
 
 # Sensors
 vendor/bin/sensors.qcom
