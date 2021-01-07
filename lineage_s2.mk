@@ -18,6 +18,12 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Sakura build flags
+SAKURA_OFFICIAL := true
+SAKURA_MAINTAINER := CakesTwix
+
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
 # Inherit from s2 device
 $(call inherit-product, device/leeco/s2/device.mk)
 
