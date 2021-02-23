@@ -21,6 +21,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/leeco/s2/s2-vendor.mk)
 
+#QCOM_SOONG_NAMESPACE := hardware/qcom-caf/msm8952
+PRODUCT_USES_QCOM_WIFI := true
+PRODUCT_USES_QCOM_HARDWARE := true
+PRODUCT_BOARD_PLATFORM := msm8952
+BUILD_BROKEN_DUP_RULES := true
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -171,7 +177,8 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.leeco_s2 \
-    fingerprint.msm8952
+    fingerprint.msm8952 \
+    libsdmutils
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \

@@ -21,7 +21,12 @@ TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8952
+#PRODUCT_BOARD_PLATFORM := msm8952
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno510
+#QCOM_SOONG_NAMESPACE ?= hardware/qcom-caf/msm8952
+#QCOM_SOONG_NAMESPACE := hardware/qcom-caf/msm8952
+#PRODUCT_SOONG_NAMESPACES += $(QCOM_SOONG_NAMESPACE)
+BUILD_BROKEN_DUP_RULES := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -58,6 +63,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/leeco/msm8976
 TARGET_KERNEL_CONFIG := lineage_s2_defconfig
+#TARGET_PREBUILT_KERNEL := device/leeco/s2/prebuilt/Image.gz-dtb
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -216,7 +222,7 @@ TARGET_USES_OLD_MNC_FORMAT := true
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
-include device/qcom/sepolicy-legacy/sepolicy.mk
+#include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 

@@ -1,3 +1,0 @@
-allow vold mnt_vendor_file:dir r_dir_perms;
-
-allow vold hal_bootctl_hwservice:hwservice_manager find;
